@@ -1,0 +1,6 @@
+zwave.__1:
+  ignored: false
+  polling_intensity: 0
+zwave.__2:
+  ignored: false
+  polling_intensity: 0
