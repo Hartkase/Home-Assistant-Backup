@@ -1,48 +1,77 @@
-  Kitchen:
+  # Views
+  kitchen_view:
+    view: yes
+    name: Kitchen
+    entities:
+      - group.kitchen
+  living_room_view:
+    view: yes
+    name: Living Room
+    entities:
+      - group.living_room
+  hallway_view:
+    view: yes
+    name: Hallway
+    entities:
+      - group.hallway
+  Outdoor_view:
+    view: yes
+    name: Outdoors
+    entities:
+      - group.outside
+  Family_view:
+    view: yes
+    name: Family
+    entities:
+      - group.family
+
+  # Groups
+  kitchen:
     name: Kitchen
     entities:
       - media_player.kitchen_home
       - media_player.kitchen_tv
       - switch.fly_killer
-  Living Room:
+  living_room:
     name: Living Room
     entities:
       - device_tracker.nashome
       - media_player.living_room_ue40ku6000
-      - sensor.aeotec_zw100_multisensor_6_alarm_level_2_1
-      - sensor.aeotec_zw100_multisensor_6_alarm_type_2_0
-      - sensor.aeotec_zw100_multisensor_6_burglar_2_10
-      - sensor.aeotec_zw100_multisensor_6_luminance_2_3
-      - sensor.aeotec_zw100_multisensor_6_relative_humidity_2_5
-      - sensor.aeotec_zw100_multisensor_6_sourcenodeid_2_2
       - sensor.aeotec_zw100_multisensor_6_temperature_2_1
+      - sensor.aeotec_zw100_multisensor_6_relative_humidity_2_5
+      - sensor.aeotec_zw100_multisensor_6_luminance_2_3
       - sensor.aeotec_zw100_multisensor_6_ultraviolet_2_27
-  Hallway:
+      - sensor.aeotec_zw100_multisensor_6_burglar_2_10
+#      - sensor.aeotec_zw100_multisensor_6_alarm_level_2_1
+#      - sensor.aeotec_zw100_multisensor_6_alarm_type_2_0
+#      - sensor.aeotec_zw100_multisensor_6_sourcenodeid_2_2
+  hallway:
     name: Hallway
     entities:
-      - sensor.hallway_thermostat_humidity
-      - sensor.hallway_thermostat_hvac_state
-      - sensor.hallway_thermostat_operation_mode
-      - sensor.hallway_thermostat_target
-      - sensor.hallway_thermostat_temperature
-      - binary_sensor.hallway_thermostat_fan
-      - binary_sensor.hallway_thermostat_has_leaf
-      - binary_sensor.hallway_thermostat_is_locked
-      - binary_sensor.hallway_thermostat_is_using_emergency_heat
-      - binary_sensor.hallway_thermostat_online
       - climate.hallway
-  Outside:
+      - binary_sensor.hallway_thermostat_online
+      - sensor.hallway_thermostat_temperature
+      - sensor.hallway_thermostat_target
+      - sensor.hallway_thermostat_humidity
+      - sensor.hallway_thermostat_operation_mode
+#      - sensor.hallway_thermostat_hvac_state
+#      - binary_sensor.hallway_thermostat_fan
+#      - binary_sensor.hallway_thermostat_has_leaf
+#      - binary_sensor.hallway_thermostat_is_locked
+#      - binary_sensor.hallway_thermostat_is_using_emergency_heat
+
+  outside:
     name: Outside
     entities:
       - sun.sun
-      - sensor.dark_sky_humidity
-      - sensor.dark_sky_icon
-      - sensor.dark_sky_nearest_storm_distance
-      - sensor.dark_sky_pressure
       - sensor.dark_sky_summary
       - sensor.dark_sky_temperature
+      - sensor.dark_sky_humidity
+      - sensor.dark_sky_pressure
       - sensor.dark_sky_wind_speed
-  Family:
+      - sensor.dark_sky_nearest_storm_distance
+
+  family:
     name: Family
     entities:
       - device_tracker.rachelphonehome
