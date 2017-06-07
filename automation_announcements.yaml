@@ -1,0 +1,67 @@
+  - alias: "Announce Startup"
+    trigger:
+      platform: homeassistant
+      # Event can also be 'shutdown'
+      event: start
+    action:
+      entity_id: media_player.kitchen_home
+      service: tts.google_say
+      data:
+        message: 'Home assistant has started'
+  - alias: "Warn Sunset Soon"
+    trigger:
+      platform: sun
+      event: sunset
+      offset: '+02:00:00'
+    action:
+      service: tts.google_say
+      data:
+        message: 'The sun will set in two hours'
+  - alias: "Announce when Ro arrives home"
+    trigger:
+      platform: state
+      entity_id: group.person_ro
+      # Optional
+      from: 'home'
+      to: 'not_home'
+    action:
+      entity_id: media_player.kitchen_home
+      service: tts.google_say
+      data:
+        message: 'Ro has arrived home'
+  - alias: "Announce when Ro leaves home"
+    trigger:
+      platform: state
+      entity_id: group.person_ro
+      # Optional
+      from: 'not_home'
+      to: 'home'
+    action:
+      entity_id: media_player.kitchen_home
+      service: tts.google_say
+      data:
+        message: 'Ro has left the building'
+  - alias: "Announce when Rachel arrives home"
+    trigger:
+      platform: state
+      entity_id: device_tracker.rachelphonehome
+      # Optional
+      from: 'home'
+      to: 'not_home'
+    action:
+      entity_id: media_player.kitchen_home
+      service: tts.google_say
+      data:
+        message: 'Rachel is home'
+  - alias: "Announce when Rachel leaves home"
+    trigger:
+      platform: state
+      entity_id: device_tracker.rachelphonehome
+      # Optional
+      from: 'not_home'
+      to: 'home'
+    action:
+      entity_id: media_player.kitchen_home
+      service: tts.google_say
+      data:
+        message: 'Rachel has left the building'

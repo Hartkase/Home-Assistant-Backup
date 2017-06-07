@@ -1,0 +1,111 @@
+  - id: Auto_announce_startup
+    alias: "Announce Startup"
+    trigger:
+      platform: homeassistant
+      # Event can also be 'shutdown'
+      event: start
+    action:
+      entity_id: media_player.kitchen_home
+      service: tts.google_say
+      data:
+        message: 'Home assistant has started'
+  - id: Auto_announce_sunset
+    alias: "Warn Sunset Soon"
+    trigger:
+      platform: sun
+      event: sunset
+      offset: '-01:00:00'
+    action:
+      service: tts.google_say
+      data:
+        message: 'One hour before sunset'
+  - id: Auto_announce_ro_home
+    alias: "Announce when Ro arrives home"
+    trigger:
+      platform: state
+      entity_id: group.person_ro
+      # Optional
+      from: 'home'
+      to: 'not_home'
+    action:
+      entity_id: media_player.kitchen_home
+      service: tts.google_say
+      data:
+        message: 'Ro has arrived home'
+  - id: Auto_announce_ro_leave
+    alias: "Announce when Ro leaves home"
+    trigger:
+      platform: state
+      entity_id: group.person_ro
+      # Optional
+      from: 'not_home'
+      to: 'home'
+    action:
+      entity_id: media_player.kitchen_home
+      service: tts.google_say
+      data:
+        message: 'Ro has left the building'
+  - id: Auto_announce_rachel_home
+    alias: "Announce when Rachel arrives home"
+    trigger:
+      platform: state
+      entity_id: device_tracker.rachelphonehome
+      # Optional
+      from: 'home'
+      to: 'not_home'
+    action:
+      entity_id: media_player.kitchen_home
+      service: tts.google_say
+      data:
+        message: 'Rachel is home'
+  - id: Auto_announce_rachel_leave
+    alias: "Announce when Rachel leaves home"
+    trigger:
+      platform: state
+      entity_id: device_tracker.rachelphonehome
+      # Optional
+      from: 'not_home'
+      to: 'home'
+    action:
+      entity_id: media_player.kitchen_home
+      service: tts.google_say
+      data:
+        message: 'Rachel has left the building'
+  - id: living_room_motion_detection
+    alias: "Living Room Motion Detection"
+    trigger:
+      platform: state
+      entity_id: sensor.aeotec_zw100_multisensor_6_burglar_2_10
+      from: '0'
+      to: '8'
+    action:
+      entity_id: media_player.kitchen_home
+      service: tts.google_say
+      data:
+        message: 'Motion detected in living room'
+  - id: living_room_motion_detection_2
+    alias: "Living Room Motion Detection 2"
+    trigger:
+      platform: state
+      entity_id: sensor.aeotec_multisensor_motion_template
+      from: 'standby'
+      to: 'motion detected'
+    action:
+      entity_id: media_player.kitchen_home
+      service: tts.google_say
+      data:
+        message: 'Motion detected in living room'
+  - id: living_room_motion_ceased
+    alias: "Living Room Motion Ceased"
+    trigger:
+      platform: state
+      entity_id: sensor.aeotec_multisensor_motion_template
+      from: 'motion detected'
+      to: 'standby'
+    action:
+      entity_id: media_player.kitchen_home
+      service: tts.google_say
+      data:
+        message: 'Motion has ceased in living room'
+
+
